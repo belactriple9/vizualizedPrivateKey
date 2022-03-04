@@ -194,6 +194,19 @@ function putPkInTextarea() {
 }
 
 
+function invertCanvas(canvas) {
+    for (let i = 0; i < canvas.length; i++) {
+        for (let j = 0; j < canvas[i].length; j++) {
+            if (canvas[i][j] == 1) {
+                canvas[i][j] = 0;
+            } else {
+                canvas[i][j] = 1;
+            }
+        }
+    }
+    return canvas;
+}
+
 
 function canvasHandler() {
 
@@ -264,6 +277,26 @@ function canvasHandler() {
 
     //get the inverse button element
     var inverseButton = document.getElementById("inverse");
+
+    //when a user clicks on the inverse button, invert the array
+    inverseButton.onclick = function () {
+        // clear the canvas
+        ctx.clearRect(0, 0, canvasElement.width, canvasElement.height);
+        drawCanvas();
+        // invert the array
+        pk = invertCanvas(pk);
+        // console.log(pk);
+        // fill the canvas with the inverted array
+        for (let x = 0; x < 16; x++) {
+            for (let y = 0; y < 16; y++) {
+                if (pk[y][x] == 1) {
+                    //console.log("Cell to fill: " + [x, y]);
+                    fillCellFromArr([x, y], ctx);
+                }
+            }
+        }
+        putPkInTextarea();
+    }
 
 
 
