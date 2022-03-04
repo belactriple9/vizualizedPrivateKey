@@ -113,7 +113,12 @@ function fillCell(CellToFill, context) {
     var LastCell = [16, 16]; // temp cell value out of range for fill by MouseMove event
     var blockX = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]; //used to block column from filling in advanced option
     var blockY = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]; //used to block row from filling in advanced option
-    let cellfillcolour = "red";
+    let cellfillcolour;
+
+    //randomize the fill colour
+    cellfillcolour = "rgb(" + Math.floor(Math.random() * 255) + "," + Math.floor(Math.random() * 255) + "," + Math.floor(Math.random() * 255) + ")";
+
+
     let cellnofillcolour = "white";
     let cell = 28;
 
@@ -137,7 +142,8 @@ function fillCell(CellToFill, context) {
 
 // Function fills/unfills the cell and changes the array element
 function fillCellFromArr(CellToFill, context) {
-    let cellfillcolour = "red";
+    let cellfillcolour;
+    cellfillcolour = "rgb(" + Math.floor(Math.random() * 255) + "," + Math.floor(Math.random() * 255) + "," + Math.floor(Math.random() * 255) + ")";
     let cell = 28;
 
     x = CellToFill[0];
